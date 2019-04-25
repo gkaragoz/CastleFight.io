@@ -1,62 +1,136 @@
 fileFormatVersion: 2
 guid: 7ae56a8428b94f24b854dac395c7c925
-timeCreated: 1533009913
-licenseType: Store
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: Bone_Base
-    100004: Bone_door_A
-    100006: Bone_door_B
-    100008: Wall_A_door_A
-    100010: Wall_A_door_B
-    100012: Wall_A_gate
-    400000: //RootNode
-    400002: Bone_Base
-    400004: Bone_door_A
-    400006: Bone_door_B
-    400008: Wall_A_door_A
-    400010: Wall_A_door_B
-    400012: Wall_A_gate
-    2300000: //RootNode
-    2300002: Wall_A_door_A
-    2300004: Wall_A_door_B
-    2300006: Wall_A_gate
-    3300000: //RootNode
-    3300002: Wall_A_door_A
-    3300004: Wall_A_door_B
-    3300006: Wall_A_gate
-    4300000: Box003
-    4300002: Gate_B
-    4300004: Wall_B_gate
-    4300006: Wall_A_gate
-    4300008: Wall_A_door_A
-    4300010: Wall_A_door_B
-    9500000: //RootNode
-    13700000: Wall_A_door_A
-    13700002: Wall_A_gate
-    13700004: Wall_A_door_B
+  serializedVersion: 25
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: Bone_Base
+  - first:
+      1: 100004
+    second: Bone_door_A
+  - first:
+      1: 100006
+    second: Bone_door_B
+  - first:
+      1: 100008
+    second: Wall_A_door_A
+  - first:
+      1: 100010
+    second: Wall_A_door_B
+  - first:
+      1: 100012
+    second: Wall_A_gate
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: Bone_Base
+  - first:
+      4: 400004
+    second: Bone_door_A
+  - first:
+      4: 400006
+    second: Bone_door_B
+  - first:
+      4: 400008
+    second: Wall_A_door_A
+  - first:
+      4: 400010
+    second: Wall_A_door_B
+  - first:
+      4: 400012
+    second: Wall_A_gate
+  - first:
+      23: 2300000
+    second: //RootNode
+  - first:
+      23: 2300002
+    second: Wall_A_door_A
+  - first:
+      23: 2300004
+    second: Wall_A_door_B
+  - first:
+      23: 2300006
+    second: Wall_A_gate
+  - first:
+      33: 3300000
+    second: //RootNode
+  - first:
+      33: 3300002
+    second: Wall_A_door_A
+  - first:
+      33: 3300004
+    second: Wall_A_door_B
+  - first:
+      33: 3300006
+    second: Wall_A_gate
+  - first:
+      43: 4300000
+    second: Box003
+  - first:
+      43: 4300002
+    second: Gate_B
+  - first:
+      43: 4300004
+    second: Wall_B_gate
+  - first:
+      43: 4300006
+    second: Wall_A_gate
+  - first:
+      43: 4300008
+    second: Wall_A_door_A
+  - first:
+      43: 4300010
+    second: Wall_A_door_B
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Wall_A_door_A
+  - first:
+      137: 13700002
+    second: Wall_A_gate
+  - first:
+      137: 13700004
+    second: Wall_A_door_B
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TT_RTS_Buildings_mat
+    second: {fileID: 2100000, guid: ee90f878377271b4fbbf915249f24476, type: 2}
   materials:
     importMaterials: 1
     materialName: 1
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleRotations: 1
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -64,13 +138,22 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
     importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -80,9 +163,15 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 0
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -92,8 +181,11 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1
