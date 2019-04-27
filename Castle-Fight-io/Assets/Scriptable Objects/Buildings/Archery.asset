@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Archery
   _prefab: {fileID: 6295894650130244845, guid: 4068308ad336ded4a88030f4f522ed69, type: 3}
-  _thumbnailImage: {fileID: 0}
+  _thumbnail: {fileID: 21300000, guid: b49d749ad4e1c30408978310451d4ad8, type: 3}

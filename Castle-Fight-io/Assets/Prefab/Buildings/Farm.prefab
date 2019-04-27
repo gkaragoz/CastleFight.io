@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2589158959710556442}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Farm
-  m_TagString: Untagged
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 520e20395d1150a4c94174228bde0499, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 520e20395d1150a4c94174228bde0499, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 520e20395d1150a4c94174228bde0499, type: 3}
       propertyPath: m_LocalPosition.x
@@ -106,6 +110,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 1b468518a5f1b10489a754019fbd290c, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1b468518a5f1b10489a754019fbd290c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1b468518a5f1b10489a754019fbd290c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -173,6 +181,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8841aadd935eb6e4f9567e5a24a1f945, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8841aadd935eb6e4f9567e5a24a1f945, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8841aadd935eb6e4f9567e5a24a1f945, type: 3}
       propertyPath: m_LocalPosition.x

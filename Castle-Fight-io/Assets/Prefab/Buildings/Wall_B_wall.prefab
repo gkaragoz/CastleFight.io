@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8115414096118206911}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall_B_wall
-  m_TagString: Untagged
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 922ea54d47119074d8b9b4e757b417e6, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 922ea54d47119074d8b9b4e757b417e6, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 922ea54d47119074d8b9b4e757b417e6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -115,6 +119,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6dc5d495c37d65043b022964d98631b9, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6dc5d495c37d65043b022964d98631b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -173,6 +181,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: c8b0da940c5dd9a408110f5e34fb5799, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c8b0da940c5dd9a408110f5e34fb5799, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c8b0da940c5dd9a408110f5e34fb5799, type: 3}
       propertyPath: m_LocalPosition.x

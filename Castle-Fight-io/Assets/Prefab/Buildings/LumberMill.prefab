@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2355670286640422988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LumberMill
-  m_TagString: Untagged
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 68dc2d4464799a947be0ba3c5b424331, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 68dc2d4464799a947be0ba3c5b424331, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 68dc2d4464799a947be0ba3c5b424331, type: 3}
       propertyPath: m_LocalPosition.x
@@ -123,6 +127,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 06905b5e993435c4e9526f63c49622e3, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 06905b5e993435c4e9526f63c49622e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -189,6 +197,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: c650d1b47e984954fa4415d5b8fba967, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c650d1b47e984954fa4415d5b8fba967, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c650d1b47e984954fa4415d5b8fba967, type: 3}
       propertyPath: m_LocalPosition.x

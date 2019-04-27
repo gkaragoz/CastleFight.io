@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5484713538213023821}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall_A_gate
-  m_TagString: Untagged
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,6 +43,26 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 7ae56a8428b94f24b854dac395c7c925, type: 3}
       propertyPath: m_Name
       value: Wall_A_gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7ae56a8428b94f24b854dac395c7c925, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 7ae56a8428b94f24b854dac395c7c925, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 7ae56a8428b94f24b854dac395c7c925, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 7ae56a8428b94f24b854dac395c7c925, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 7ae56a8428b94f24b854dac395c7c925, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7ae56a8428b94f24b854dac395c7c925, type: 3}
       propertyPath: m_LocalPosition.x
@@ -88,6 +108,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 7ae56a8428b94f24b854dac395c7c925, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 7ae56a8428b94f24b854dac395c7c925, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ae56a8428b94f24b854dac395c7c925, type: 3}
 --- !u!4 &5484713537096911604 stripped
@@ -110,6 +138,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5e5b7457c68ebd447b8a03dd55c4f660, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5e5b7457c68ebd447b8a03dd55c4f660, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e5b7457c68ebd447b8a03dd55c4f660, type: 3}
       propertyPath: m_LocalPosition.x
@@ -177,6 +209,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: caa0b36c4f60f7b47a461c12cd9fe8cd, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: caa0b36c4f60f7b47a461c12cd9fe8cd, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: caa0b36c4f60f7b47a461c12cd9fe8cd, type: 3}
       propertyPath: m_LocalPosition.x

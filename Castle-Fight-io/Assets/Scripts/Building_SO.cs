@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Building", menuName = "Scriptable Objects/Building")]
 public class Building_SO : ScriptableObject {
@@ -14,7 +13,7 @@ public class Building_SO : ScriptableObject {
     private GameObject _prefab;
 
     [SerializeField]
-    private Image _thumbnailImage;
+    private Sprite _thumbnail;
 
     public string Name {
         get { return _name; }
@@ -26,9 +25,9 @@ public class Building_SO : ScriptableObject {
         private set { _prefab = value; }
     }
 
-    public Image ThumbnailImage {
-        get { return _thumbnailImage; }
-        private set { _thumbnailImage = value; }
+    public Sprite Thumbnail {
+        get { return _thumbnail; }
+        private set { _thumbnail = value; }
     }
 
     #endregion

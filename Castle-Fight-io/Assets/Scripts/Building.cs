@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class Building : MonoBehaviour {
 
@@ -10,6 +9,8 @@ public class Building : MonoBehaviour {
     [Header("Debug")]
     [SerializeField]
     private Building_SO _building;
+    [SerializeField]
+    private bool _isCollidingToAnotherStructure;
 
     #region Initializations
 
@@ -31,21 +32,37 @@ public class Building : MonoBehaviour {
 
     #region Reporters
 
+    public bool IsCollidingToAnotherStructure(LayerMask structureLayerMask) {
+        return CheckCollisions(structureLayerMask);
+    }
+
     public string GetName() {
-        return _building.Name;
+        return _buildingDefinition_Template.Name;
     }
 
     public GameObject GetPrefab() {
-        return _building.Prefab;
+        return _buildingDefinition_Template.Prefab;
     }
 
-    public Image GetThumbnailImage() {
-        return _building.ThumbnailImage;
+    public Sprite GetThumbnail() {
+        return _buildingDefinition_Template.Thumbnail;
     }
 
     #endregion
 
     #region Custom Methods
+
+    public bool CheckCollisions(LayerMask structureLayerMask) {
+        Collider[] colliders = Physics.OverlapBox(transform.position, GetComponent<BoxCollider>().size * 0.5f, Quaternion.identity, structureLayerMask);
+        for (int ii = 0; ii < colliders.Length; ii++) {
+            if (colliders[ii].transform == this.transform) {
+                continue;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
 
     #endregion
 

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3431334021228412809}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tower_B
-  m_TagString: Untagged
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 1e99ddaf9b6c01949bda36d1292dce52, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1e99ddaf9b6c01949bda36d1292dce52, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1e99ddaf9b6c01949bda36d1292dce52, type: 3}
       propertyPath: m_LocalPosition.x
@@ -115,6 +119,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a6360e359f4767e41a49aec1887be29c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6360e359f4767e41a49aec1887be29c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -177,6 +185,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: f38b9a56b23e4df499eaede1c2276296, type: 3}
       propertyPath: m_Name
       value: Tower_B
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f38b9a56b23e4df499eaede1c2276296, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f38b9a56b23e4df499eaede1c2276296, type: 3}
       propertyPath: m_LocalPosition.x
