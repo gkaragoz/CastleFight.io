@@ -2410,7 +2410,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463431901}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c029ba5f9d07734fb231322ac2652b8, type: 3}
   m_Name: 
@@ -2704,7 +2704,6 @@ MonoBehaviour:
   _isPlacing: 0
   _selectedBuilding: {fileID: 0}
   _buildingIndicator: {fileID: 6411717}
-  _cameraController: {fileID: 1463431904}
 --- !u!4 &1680225593
 Transform:
   m_ObjectHideFlags: 0
