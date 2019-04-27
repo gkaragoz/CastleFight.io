@@ -231,11 +231,6 @@ namespace BitBenderGames {
         DrawPropertyField("zoomTiltAngleMax", mobileTouchCamera.ZoomTiltAngleMax <= maxTiltErrorAngle, true, subSettingsInset);
       }
 
-      DrawPropertyField("OnPickItem");
-      DrawPropertyField("OnPickItem2D");
-      DrawPropertyField("OnPickItemDoubleClick");
-      DrawPropertyField("OnPickItem2DDoubleClick");
-
       DrawPropertyField("expertModeEnabled");
       SerializedProperty serializedPropertyExpertMode = serializedObject.FindProperty("expertModeEnabled");
       if(serializedPropertyExpertMode.boolValue == true) {
