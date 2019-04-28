@@ -6,6 +6,8 @@ public class BuildingPlacer : MonoBehaviour {
     [SerializeField]
     private LayerMask _structureLayerMask;
     [SerializeField]
+    private LayerMask _buildAreaLayerMask;
+    [SerializeField]
     private Transform _meshParent;
     [SerializeField]
     private GameObject _container;
@@ -60,7 +62,7 @@ public class BuildingPlacer : MonoBehaviour {
 
     private void MoveHandlerUIPosition(Vector3 position) {
         _buildingIndicator.transform.parent.position = new Vector3(position.x, _buildingIndicator.transform.parent.position.y, position.z);
-        _buildingIndicator.SetColor(CheckCollisions());
+        _buildingIndicator.SetColor(IsAvailableToBuild());
         _buildingIndicator.Show();
     }
 
@@ -68,7 +70,7 @@ public class BuildingPlacer : MonoBehaviour {
         return (_selectedBuilding == null) ? false : true;
     }
 
-    public void ResetIndicators() {
+    public void ResetIndicators(bool shouldDestroyBuilding) {
         if (HasBuildingSelected()) {
             _selectedBuilding.transform.SetParent(null);
             _selectedBuilding = null;
@@ -82,13 +84,13 @@ public class BuildingPlacer : MonoBehaviour {
         CameraController.ResetTarget();
     }
 
-    public bool CheckCollisions() {
+    public bool IsAvailableToBuild() {
         if (_selectedBuilding == null) {
             Debug.LogError("Selected building not found.");
             return false;
         }
 
-        return _selectedBuilding.IsCollidingToAnotherStructure(_structureLayerMask);
+        return (_selectedBuilding.IsCollidingToAnotherStructure(_structureLayerMask) == false && _selectedBuilding.IsInBuildArea(_buildAreaLayerMask) == true) ? true : false;
     }
 
     public void SelectBuilding(GameObject buildingObject) {

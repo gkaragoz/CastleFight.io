@@ -17,12 +17,16 @@ public class Building : MonoBehaviour {
     [SerializeField]
     private bool _isCollidingToAnotherStructure;
 
+    private BoxCollider _boxCollider;
+
     #region Initializations
 
     private void Awake() {
         if (_buildingDefinition_Template != null) {
             _building = Instantiate(_buildingDefinition_Template);
         }
+
+        _boxCollider = GetComponent<BoxCollider>();
     }
 
     #endregion
@@ -72,10 +76,6 @@ public class Building : MonoBehaviour {
     #endregion
 
     #region Reporters
-
-    public bool IsCollidingToAnotherStructure(LayerMask structureLayerMask) {
-        return CheckCollisions(structureLayerMask);
-    }
 
     public string GetName() {
         return _buildingDefinition_Template.Name;
@@ -142,7 +142,7 @@ public class Building : MonoBehaviour {
 
         _constructions[index].SetActive(false);
     }
-
+    
     private IEnumerator IBuildingProcess() {
         Debug.Log("...Building: " + GetName());
 
@@ -187,7 +187,7 @@ public class Building : MonoBehaviour {
         yield break;
     }
 
-    public bool CheckCollisions(LayerMask structureLayerMask) {
+    public bool IsCollidingToAnotherStructure(LayerMask structureLayerMask) {
         Collider[] colliders = Physics.OverlapBox(transform.position, GetComponent<BoxCollider>().size * 0.5f, Quaternion.identity, structureLayerMask);
         for (int ii = 0; ii < colliders.Length; ii++) {
             if (colliders[ii].transform == this.transform) {
@@ -199,10 +199,66 @@ public class Building : MonoBehaviour {
         return false;
     }
 
+    public bool IsInBuildArea(LayerMask buildAreaLayerMask) {
+        bool upperRight = false;
+        bool lowerLeft = false;
+
+        Vector3 cornerUpperRight = new Vector3(transform.position.x + (_boxCollider.size.x * 0.5f),
+                                                 transform.position.y,
+                                                 transform.position.z + (_boxCollider.size.z * 0.5f));
+        Ray rayUpperRight = new Ray(cornerUpperRight, Vector3.down);
+        RaycastHit hitUpperRightCorner;
+
+        if (Physics.Raycast(rayUpperRight, out hitUpperRightCorner, Mathf.Infinity, buildAreaLayerMask)) {
+            if (((1 << hitUpperRightCorner.collider.gameObject.layer) & buildAreaLayerMask) != 0) {
+                upperRight = true;
+            }
+        }
+
+        Vector3 cornerLowerLeft = new Vector3(transform.position.x - (_boxCollider.size.x * 0.5f),
+                                                transform.position.y,
+                                                transform.position.z - (_boxCollider.size.z * 0.5f));
+        Ray rayLowerLeft = new Ray(cornerLowerLeft, Vector3.down);
+        RaycastHit hitLowerLeftCorner;
+
+        if (Physics.Raycast(rayLowerLeft, out hitLowerLeftCorner, Mathf.Infinity, buildAreaLayerMask)) {
+            if (((1 << hitLowerLeftCorner.collider.gameObject.layer) & buildAreaLayerMask) != 0) {
+                lowerLeft = true;
+            }
+        }
+
+        return (upperRight && lowerLeft) ? true : false;
+    }
+
     public void StartBuilding() {
         SetIsBuilding(true);
 
         StartCoroutine(IBuildingProcess());
+    }
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+
+        Vector3 cornerUpperRight = new Vector3(  transform.position.x + (_boxCollider.size.x * 0.5f), 
+                                                 transform.position.y, 
+                                                 transform.position.z + (_boxCollider.size.z * 0.5f));
+        Ray rayUpperRight = new Ray(cornerUpperRight, Vector3.down);
+        RaycastHit hitUpperRightCorner;
+
+        if (Physics.Raycast(rayUpperRight, out hitUpperRightCorner, Mathf.Infinity)) {
+        }
+
+        Vector3 cornerLowerLeft = new Vector3(  transform.position.x - (_boxCollider.size.x * 0.5f), 
+                                                transform.position.y, 
+                                                transform.position.z - (_boxCollider.size.z * 0.5f));
+        Ray rayLowerLeft = new Ray(cornerUpperRight, Vector3.down);
+        RaycastHit hitLowerLeftCorner;
+
+        if (Physics.Raycast(rayUpperRight, out hitLowerLeftCorner, Mathf.Infinity)) {
+        }
+
+        Debug.DrawRay(cornerUpperRight, Vector3.down, Color.red, 3f);
+        Debug.DrawRay(cornerLowerLeft, Vector3.down, Color.red, 3f);
     }
 
     #endregion

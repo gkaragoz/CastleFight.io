@@ -44,11 +44,11 @@ public class BuildingIndicator : Menu, IDraggable, IClickable {
         onPointerClick?.Invoke(data);
     }
 
-    public void SetColor(bool isColliding) {
-        if (isColliding) {
-            _imgInteraction.color = _notReadyColor;
-        } else {
+    public void SetColor(bool isOkay) {
+        if (isOkay) {
             _imgInteraction.color = _readyColor;
+        } else {
+            _imgInteraction.color = _notReadyColor;
         }
     }
 }

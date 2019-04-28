@@ -50,16 +50,17 @@ public class BuildingManager : MonoBehaviour {
     }
 
     public void BuildIt() {
-        if (_buildingPlacer.CheckCollisions()) {
-            Debug.Log("Can't build here!");
-        } else {
+        if (_buildingPlacer.IsAvailableToBuild()) {
             _buildingPlacer.SelectedBuilding.StartBuilding();
-            _buildingPlacer.ResetIndicators();
+            _buildingPlacer.ResetIndicators(false);
+        } else {
+            Debug.Log("Can't build here!");
         }
     }
 
     public void CancelIt() {
-        _buildingPlacer.ResetIndicators();
+        Destroy(_buildingPlacer.SelectedBuilding.gameObject);
+        _buildingPlacer.ResetIndicators(true);
     }
 
 }
