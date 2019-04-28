@@ -2411,7 +2411,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463431901}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20048c13a5d194941bac6cd566a5e468, type: 3}
   m_Name: 
@@ -2480,16 +2480,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ef8c68bade09b41aca258d42a632f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useFixedUpdate: 0
-  followingSpeed: 150
-  panningSpeed: 100
-  limitMap: 1
-  limitX: 40
-  limitY: 65
-  targetFollow: {fileID: 0}
-  targetOffset: {x: 0, y: 0, z: -25}
-  usePanning: 1
-  panningKey: 325
+  _usePanning: 1
+  _panningKey: 323
+  _followingSpeed: 50
+  _panningSpeed: 40
+  _limitMap: 1
+  _boundsX:
+  - -30
+  - 30
+  _boundsZ:
+  - -50
+  - 25
+  _targetFollow: {fileID: 0}
+  _targetOffset: {x: 0, y: 0, z: -25}
 --- !u!1 &1564906456
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,10 +2728,9 @@ MonoBehaviour:
   _container: {fileID: 1570719411}
   _truePosition: {x: 5, y: 0, z: 8}
   _gridSize: 1
-  _isPlacing: 0
   _selectedBuilding: {fileID: 0}
   _buildingIndicator: {fileID: 6411717}
-  RTS_Camera: {fileID: 1463431907}
+  CameraController: {fileID: 1463431907}
 --- !u!4 &1680225593
 Transform:
   m_ObjectHideFlags: 0

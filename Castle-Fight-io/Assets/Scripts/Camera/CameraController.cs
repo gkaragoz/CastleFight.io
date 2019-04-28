@@ -3,44 +3,56 @@
 [RequireComponent(typeof(Camera))]
 public class CameraController : MonoBehaviour {
 
-    private Transform m_Transform; //camera tranform
-    public bool useFixedUpdate = false; //use FixedUpdate() or Update()
+    [Header("Movement")]
+    [SerializeField]
+    private bool _usePanning = true;
+    [SerializeField]
+    private KeyCode _panningKey = KeyCode.Mouse2;
+    [SerializeField]
+    private float _followingSpeed = 5f;
+    [SerializeField]
+    private float _panningSpeed = 10f;
 
-    #region Movement
+    private int _panFingerId;
+    private Vector3 _lastPanPosition;
 
-    public float followingSpeed = 5f; //speed when following a target
-    public float panningSpeed = 10f;
+    [Header("Map Limits")]
+    [SerializeField]
+    private bool _limitMap = true;
+    [SerializeField]
+    private float[] _boundsX = new float[] { -10f, 5f };
+    [SerializeField]
+    private float[] _boundsZ = new float[] { -18f, -4f };
 
-    #endregion
+    [Header("Targeting")]
+    [SerializeField]
+    private Transform _targetFollow;
+    [SerializeField]
+    private Vector3 _targetOffset;
 
-    #region MapLimits
+    public bool IsLocked { get; set; }
 
-    public bool limitMap = true;
-    public float limitX = 50f; //x limit of map
-    public float limitY = 50f; //z limit of map
-
-    #endregion
-
-    #region Targeting
-
-    public Transform targetFollow; //target to follow
-    public Vector3 targetOffset;
-
-    /// <summary>
-    /// are we following target
-    /// </summary>
-    public bool FollowingTarget {
+    public bool IsPanning {
         get {
-            return targetFollow != null;
+            if (Input.touchCount == 1) {
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began || (touch.fingerId == _panFingerId && touch.phase == TouchPhase.Moved)) {
+                    return true;
+                }
+            }
+            if (Input.GetKey(_panningKey)) {
+                return true;
+            }
+
+            return false;
         }
     }
 
-    #endregion
-
-    #region Input
-
-    public bool usePanning = true;
-    public KeyCode panningKey = KeyCode.Mouse2;
+    public bool IsFollowingTarget {
+        get {
+            return _targetFollow != null;
+        }
+    }
 
     private Vector2 MouseInput {
         get { return Input.mousePosition; }
@@ -50,96 +62,95 @@ public class CameraController : MonoBehaviour {
         get { return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")); }
     }
 
-    #endregion
-
-    #region Unity_Methods
-
-    private void Start() {
-        m_Transform = transform;
-    }
-
     private void Update() {
-        if (!useFixedUpdate)
-            CameraUpdate();
+        CameraUpdate();
     }
 
-    private void FixedUpdate() {
-        if (useFixedUpdate)
-            CameraUpdate();
-    }
-
-    #endregion
-
-    #region RTSCamera_Methods
-
-    /// <summary>
-    /// update camera movement and rotation
-    /// </summary>
     private void CameraUpdate() {
         // Quit from following target while panning.
-        if (usePanning && Input.GetKey(panningKey) && MouseAxis != Vector2.zero) {
+        if (IsPanning) {
             ResetTarget();
         }
+        
+        if (IsLocked) {
+            return;
+        }
 
-        if (FollowingTarget) {
+        if (IsFollowingTarget) {
             FollowTarget();
         } else {
-            Move();
+            if (Input.touchSupported) {
+                TouchMovement();
+            } else {
+                MouseMovement();
+            }
         }
 
         LimitPosition();
     }
 
-    /// <summary>
-    /// move camera with keyboard or with screen edge
-    /// </summary>
-    private void Move() {
-        if (usePanning && Input.GetKey(panningKey) && MouseAxis != Vector2.zero) {
-            Vector3 desiredMove = new Vector3(-MouseAxis.x, 0, -MouseAxis.y);
-
-            desiredMove *= panningSpeed;
-            desiredMove *= Time.deltaTime;
-            desiredMove = Quaternion.Euler(new Vector3(0f, transform.eulerAngles.y, 0f)) * desiredMove;
-            desiredMove = m_Transform.InverseTransformDirection(desiredMove);
-
-            m_Transform.Translate(desiredMove, Space.Self);
+    private void TouchMovement() {
+        if (Input.touchCount == 1) {
+            // Panning
+            // If the touch began, capture its position and its finger ID.
+            // Otherwise, if the finger ID of the touch doesn't match, skip it.
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began) {
+                _lastPanPosition = touch.position;
+                _panFingerId = touch.fingerId;
+            } else if (touch.fingerId == _panFingerId && touch.phase == TouchPhase.Moved) {
+                PanCamera(touch.position);
+            }
         }
     }
 
-    /// <summary>
-    /// follow targetif target != null
-    /// </summary>
-    private void FollowTarget() {
-        Vector3 targetPos = new Vector3(targetFollow.position.x, m_Transform.position.y, targetFollow.position.z) + targetOffset;
-        m_Transform.position = Vector3.MoveTowards(m_Transform.position, targetPos, Time.deltaTime * followingSpeed);
+    private void PanCamera(Vector3 newPanPosition) {
+        // Determine how much to move the camera
+        Vector3 offset = Camera.main.ScreenToViewportPoint(_lastPanPosition - newPanPosition);
+        Vector3 move = new Vector3(offset.x * _panningSpeed, 0, offset.y * _panningSpeed);
+
+        // Perform the movement
+        transform.Translate(move, Space.World);
+
+        // Cache the position
+        _lastPanPosition = newPanPosition;
     }
 
-    /// <summary>
-    /// limit camera position
-    /// </summary>
+    private void MouseMovement() {
+        if (_usePanning && Input.GetKey(_panningKey) && MouseAxis != Vector2.zero) {
+            Vector3 desiredMove = new Vector3(-MouseAxis.x, 0, -MouseAxis.y);
+
+            desiredMove *= _panningSpeed;
+            desiredMove *= Time.deltaTime;
+            desiredMove = Quaternion.Euler(new Vector3(0f, transform.eulerAngles.y, 0f)) * desiredMove;
+            desiredMove = transform.InverseTransformDirection(desiredMove);
+
+            transform.Translate(desiredMove, Space.Self);
+        }
+    }
+
+    private void FollowTarget() {
+        Vector3 targetPos = new Vector3(_targetFollow.position.x, transform.position.y, _targetFollow.position.z) + _targetOffset;
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * _followingSpeed);
+    }
+
     private void LimitPosition() {
-        if (!limitMap)
+        if (!_limitMap)
             return;
 
-        m_Transform.position = new Vector3(Mathf.Clamp(m_Transform.position.x, -limitX, limitX),
-            m_Transform.position.y,
-            Mathf.Clamp(m_Transform.position.z, -limitY, limitY));
+        // Ensure the camera remains within bounds.
+        Vector3 pos = transform.position;
+        pos.x = Mathf.Clamp(transform.position.x, _boundsX[0], _boundsX[1]);
+        pos.z = Mathf.Clamp(transform.position.z, _boundsZ[0], _boundsZ[1]);
+        transform.position = pos;
     }
 
-    /// <summary>
-    /// set the target
-    /// </summary>
-    /// <param name="target"></param>
     public void SetTarget(Transform target) {
-        targetFollow = target;
+        _targetFollow = target;
     }
 
-    /// <summary>
-    /// reset the target (target is set to null)
-    /// </summary>
     public void ResetTarget() {
-        targetFollow = null;
+        _targetFollow = null;
     }
 
-    #endregion
 }

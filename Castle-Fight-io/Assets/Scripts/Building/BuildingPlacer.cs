@@ -14,13 +14,11 @@ public class BuildingPlacer : MonoBehaviour {
     [SerializeField]
     private float _gridSize = 0.5f;
     [SerializeField]
-    private bool _isPlacing = false;
-    [SerializeField]
     private Building _selectedBuilding;
     [SerializeField]
     private BuildingIndicator _buildingIndicator;
     [SerializeField]
-    private CameraController RTS_Camera;
+    private CameraController CameraController;
 
     public Building SelectedBuilding { get { return _selectedBuilding; } }
 
@@ -32,35 +30,31 @@ public class BuildingPlacer : MonoBehaviour {
 
     private void OnBeginDrag(PointerEventData data) {
         if (HasBuildingSelected()) {
-            _isPlacing = true;
-
-            RTS_Camera.ResetTarget();
+            CameraController.IsLocked = true;
+            CameraController.ResetTarget();
         }
     }
 
     private void OnDrag(PointerEventData data) {
         if (HasBuildingSelected()) {
+            CameraController.IsLocked = true;
+            CameraController.ResetTarget();
+
             _container.transform.position = data.pointerCurrentRaycast.worldPosition;
 
-            //_truePosition.x = Mathf.Floor(_container.transform.position.x / _gridSize) * _gridSize;
-            //_truePosition.y = Mathf.Floor(_container.transform.position.y / _gridSize) * _gridSize;
-            //_truePosition.z = Mathf.Floor(_container.transform.position.z / _gridSize) * _gridSize;
+            _truePosition.x = Mathf.Floor(_container.transform.position.x / _gridSize) * _gridSize;
+            _truePosition.y = Mathf.Floor(_container.transform.position.y / _gridSize) * _gridSize;
+            _truePosition.z = Mathf.Floor(_container.transform.position.z / _gridSize) * _gridSize;
 
-            //_meshParent.position = _truePosition;
-            //MoveHandlerUIPosition(_truePosition);
-
-            _meshParent.position = _container.transform.position;
-            MoveHandlerUIPosition(_container.transform.position);
-
-            RTS_Camera.ResetTarget();
+            _meshParent.position = _truePosition;
+            MoveHandlerUIPosition(_truePosition);
         }
     }
 
     private void OnEndDrag(PointerEventData data) {
         if (HasBuildingSelected()) {
-            _isPlacing = false;
-
-            RTS_Camera.SetTarget(_selectedBuilding.transform);
+            CameraController.IsLocked = false;
+            CameraController.SetTarget(_selectedBuilding.transform);
         }
     }
 
@@ -75,8 +69,6 @@ public class BuildingPlacer : MonoBehaviour {
     }
 
     public void ResetIndicators() {
-        _isPlacing = false;
-
         if (HasBuildingSelected()) {
             _selectedBuilding.transform.SetParent(null);
             _selectedBuilding = null;
@@ -87,7 +79,7 @@ public class BuildingPlacer : MonoBehaviour {
         _meshParent.transform.position = Vector3.zero;
         _buildingIndicator.Hide();
 
-        RTS_Camera.ResetTarget();
+        CameraController.ResetTarget();
     }
 
     public bool CheckCollisions() {
@@ -114,7 +106,7 @@ public class BuildingPlacer : MonoBehaviour {
         _selectedBuilding.transform.position = Vector3.zero;
         MoveHandlerUIPosition(_selectedBuilding.transform.position);
 
-        RTS_Camera.SetTarget(_selectedBuilding.transform);
+        CameraController.SetTarget(_selectedBuilding.transform);
     }
 
 }
