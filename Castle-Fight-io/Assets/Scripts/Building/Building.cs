@@ -29,16 +29,44 @@ public class Building : MonoBehaviour {
 
     #region Increasers
 
+    public void IncreaseHealth(float value) {
+        if (GetCurrentHealth() + value >= GetMaxHealth()) {
+            return;
+        }
+
+        _building.CurrentHealth += value;
+    }
+
     #endregion
 
     #region Decreasers
+
+    public void DecreaseHealth(float value) {
+        _building.CurrentHealth -= value;
+
+        if (GetCurrentHealth() <= 0) {
+            _building.CurrentHealth = 0;
+        }
+    }
 
     #endregion
 
     #region Setters
 
     public void SetIsBuilding(bool status) {
-        _buildingDefinition_Template.IsBuilding = status;
+        _building.IsBuilding = status;
+    }
+
+    public void SetCurrentHealth(float amount) {
+        if (amount <= 0) {
+            _building.CurrentHealth = 0;
+            return;
+        }
+        if (amount > GetMaxHealth()) {
+            _building.MaxHealth = amount;
+        }
+
+        _building.CurrentHealth = amount;
     }
 
     #endregion
@@ -62,23 +90,31 @@ public class Building : MonoBehaviour {
     }
 
     public float GetBuildingTime() {
-        return _buildingDefinition_Template.BuildingTime;
+        return _building.BuildingTime;
     }
 
     public float GetPrice() {
-        return _buildingDefinition_Template.Price;
+        return _building.Price;
     }
 
     public bool GetIsBuilding() {
-        return _buildingDefinition_Template.IsBuilding;
+        return _building.IsBuilding;
+    }
+
+    public float GetCurrentHealth() {
+        return _building.CurrentHealth;
+    }
+
+    public float GetMaxHealth() {
+        return _building.MaxHealth;
     }
 
     #endregion
 
     #region Custom Methods
 
-    private float GetConstructionPartTime() {
-        return GetBuildingTime() / (_constructions.Length + 1); // +1 is main building.
+    private float GetConstructionPartCooldown() {
+        return GetBuildingTime() / (_constructions.Length);
     }
 
     private void ShowMainBuilding() {
@@ -108,26 +144,30 @@ public class Building : MonoBehaviour {
     }
 
     private IEnumerator IBuildingProcess() {
-        float startedTimeStamp = Time.time;
-        float constructionTimer = 0;
-        float constructionPartTime = GetConstructionPartTime();
+        Debug.Log("...Building: " + GetName());
+
+        float processedTime = 0;
+        float partCooldown = GetConstructionPartCooldown();
+        float upgradeTimestamep = 0;
         int constructionPrefabIndex = -1;
 
         HideMainBuilding();
 
         while (true) {
+            processedTime += Time.deltaTime;
+
+            // If building completed, exit loop.
+            if (processedTime >= GetBuildingTime()) {
+                break;
+            }
+
             // Checkpoint for new construction prefab.
-            if (Time.time > constructionTimer) {
-                constructionTimer = Time.time + constructionPartTime;
+            if (Time.time > upgradeTimestamep) {
+                upgradeTimestamep = Time.time + partCooldown;
 
                 // Hide previous construction prefab.
                 if (constructionPrefabIndex >= 0) {
                     HideConstructionPrefab(constructionPrefabIndex);
-                }
-
-                // If building completed, exit loop.
-                if (constructionTimer - startedTimeStamp >= GetBuildingTime()) {
-                    break;
                 }
 
                 // Show next construction prefab.
@@ -135,9 +175,12 @@ public class Building : MonoBehaviour {
                 ShowConstructionPrefab(constructionPrefabIndex);
             }
 
+            SetCurrentHealth(processedTime.Map(0, GetBuildingTime(), 0, GetMaxHealth()));
+
             yield return new WaitForFixedUpdate();
         }
 
+        Debug.Log("Build completed: " + GetName());
         ShowMainBuilding();
         SetIsBuilding(false);
 

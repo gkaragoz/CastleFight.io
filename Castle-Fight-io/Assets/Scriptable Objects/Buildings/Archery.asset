@@ -15,5 +15,8 @@ MonoBehaviour:
   _name: Archery
   _prefab: {fileID: 6295894650130244845, guid: 4068308ad336ded4a88030f4f522ed69, type: 3}
   _thumbnail: {fileID: 21300000, guid: b49d749ad4e1c30408978310451d4ad8, type: 3}
-  _buildingTime: 5
+  _buildingTime: 10
   _price: 200
+  _isBuilding: 0
+  _currentHealth: 0
+  _maxHealth: 1000

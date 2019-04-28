@@ -23,6 +23,12 @@ public class Building_SO : ScriptableObject {
     [SerializeField]
     private bool _isBuilding;
 
+    [SerializeField]
+    private float _currentHealth;
+
+    [SerializeField]
+    private float _maxHealth;
+
     public string Name {
         get { return _name; }
         set { _name = value; }
@@ -51,6 +57,16 @@ public class Building_SO : ScriptableObject {
     public bool IsBuilding {
         get { return _isBuilding; }
         set { _isBuilding = value; }
+    }
+
+    public float CurrentHealth {
+        get { return _currentHealth; }
+        set { _currentHealth = value; }
+    }
+
+    public float MaxHealth {
+        get { return _maxHealth; }
+        set { _maxHealth = value; }
     }
 
     #endregion
