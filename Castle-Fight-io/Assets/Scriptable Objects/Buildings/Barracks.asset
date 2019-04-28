@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Barracks
   _prefab: {fileID: 2175218285078607995, guid: 6996a8daab76d5e498c4bed4533902c2, type: 3}
   _thumbnail: {fileID: 21300000, guid: 103635ad5e7c3784eb793a8598694ab1, type: 3}
-  _buildingTime: 10
+  _buildingTime: 3
   _price: 100
   _isBuilding: 0
   _currentHealth: 0

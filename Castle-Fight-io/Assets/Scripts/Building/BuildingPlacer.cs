@@ -43,12 +43,15 @@ public class BuildingPlacer : MonoBehaviour {
         if (HasBuildingSelected()) {
             _container.transform.position = data.pointerCurrentRaycast.worldPosition;
 
-            _truePosition.x = Mathf.Floor(_container.transform.position.x / _gridSize) * _gridSize;
-            _truePosition.y = Mathf.Floor(_container.transform.position.y / _gridSize) * _gridSize;
-            _truePosition.z = Mathf.Floor(_container.transform.position.z / _gridSize) * _gridSize;
+            //_truePosition.x = Mathf.Floor(_container.transform.position.x / _gridSize) * _gridSize;
+            //_truePosition.y = Mathf.Floor(_container.transform.position.y / _gridSize) * _gridSize;
+            //_truePosition.z = Mathf.Floor(_container.transform.position.z / _gridSize) * _gridSize;
 
-            _meshParent.position = _truePosition;
-            MoveHandlerUIPosition(_truePosition);
+            //_meshParent.position = _truePosition;
+            //MoveHandlerUIPosition(_truePosition);
+
+            _meshParent.position = _container.transform.position;
+            MoveHandlerUIPosition(_container.transform.position);
 
             RTS_Camera.ResetTarget();
         }
