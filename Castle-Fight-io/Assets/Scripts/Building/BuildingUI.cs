@@ -15,14 +15,14 @@ public class BuildingUI : MonoBehaviour {
     private Color _colorMinimumHealth;
     private Color _colorMaximumHealth;
 
-    private void Awake() {
-        _colorMinimumHealth = new Color(255, 96, 0, 255);
-        _colorMaximumHealth = new Color(100, 233, 36, 255);
+    private void Start() {
+        _colorMinimumHealth = Color.red;
+        _colorMaximumHealth = Color.green;
     }
 
     private void Update() {
         _sliderHealthBar.value = Mathf.Lerp(_sliderHealthBar.value, _building.GetCurrentHealth() / _building.GetMaxHealth(), _lerpSpeed);
-        _imgHealthBarFill.color = Color.Lerp(_colorMinimumHealth, _colorMinimumHealth, _sliderHealthBar.value);
+        _imgHealthBarFill.color = Color.Lerp(_colorMinimumHealth, _colorMaximumHealth, _sliderHealthBar.value);
     }
 
 }
