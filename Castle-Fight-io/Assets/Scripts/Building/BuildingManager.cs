@@ -53,6 +53,7 @@ public class BuildingManager : MonoBehaviour {
         if (_buildingPlacer.CheckCollisions()) {
             Debug.Log("Can't build here!");
         } else {
+            _buildingPlacer.SelectedBuilding.StartBuilding();
             _buildingPlacer.ResetIndicators();
         }
     }

@@ -23,6 +23,8 @@ public class BuildingPlacer : MonoBehaviour {
     [SerializeField]
     private RTS_Camera RTS_Camera;
 
+    public Building SelectedBuilding { get { return _selectedBuilding; } }
+
     private void Awake() {
         _buildingIndicator.onBeginDrag = OnBeginDrag;
         _buildingIndicator.onDrag = OnDrag;

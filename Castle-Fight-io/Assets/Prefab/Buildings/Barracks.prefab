@@ -50,6 +50,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buildingDefinition_Template: {fileID: 11400000, guid: 4c7d2507adb89a84997ed1c6f45d2a5a,
     type: 2}
+  _mainBuilding: {fileID: 2175218284856563040}
+  _constructions:
+  - {fileID: 2175218284631060292}
+  - {fileID: 2175218283702554261}
   _building: {fileID: 0}
   _isCollidingToAnotherStructure: 0
 --- !u!65 &4891469520574366840
@@ -88,6 +92,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2175218285078607994}
     m_Modifications:
+    - target: {fileID: 100000, guid: a2bc843dcc7a5be45993257d22444585, type: 3}
+      propertyPath: m_Name
+      value: Barracks_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2bc843dcc7a5be45993257d22444585, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2bc843dcc7a5be45993257d22444585, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a2bc843dcc7a5be45993257d22444585, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -140,20 +156,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: a2bc843dcc7a5be45993257d22444585, type: 3}
-      propertyPath: m_Name
-      value: Barracks_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: a2bc843dcc7a5be45993257d22444585, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: a2bc843dcc7a5be45993257d22444585, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2bc843dcc7a5be45993257d22444585, type: 3}
+--- !u!1 &2175218283702554261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: a2bc843dcc7a5be45993257d22444585,
+    type: 3}
+  m_PrefabInstance: {fileID: 2175218283702585397}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2175218283702194869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a2bc843dcc7a5be45993257d22444585,
@@ -167,6 +177,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2175218285078607994}
     m_Modifications:
+    - target: {fileID: 100000, guid: 89fb5f68a7a07e24aa03504d5a034e9e, type: 3}
+      propertyPath: m_Name
+      value: Barracks_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 89fb5f68a7a07e24aa03504d5a034e9e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 89fb5f68a7a07e24aa03504d5a034e9e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 89fb5f68a7a07e24aa03504d5a034e9e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -219,20 +241,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 89fb5f68a7a07e24aa03504d5a034e9e, type: 3}
-      propertyPath: m_Name
-      value: Barracks_0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 89fb5f68a7a07e24aa03504d5a034e9e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 89fb5f68a7a07e24aa03504d5a034e9e, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89fb5f68a7a07e24aa03504d5a034e9e, type: 3}
+--- !u!1 &2175218284631060292 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 89fb5f68a7a07e24aa03504d5a034e9e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2175218284631157220}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2175218284630766436 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 89fb5f68a7a07e24aa03504d5a034e9e,
@@ -246,6 +262,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2175218285078607994}
     m_Modifications:
+    - target: {fileID: 100000, guid: e2f28d7d7478cb64597ebb9077abfe6e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e2f28d7d7478cb64597ebb9077abfe6e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e2f28d7d7478cb64597ebb9077abfe6e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e2f28d7d7478cb64597ebb9077abfe6e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -294,20 +322,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: e2f28d7d7478cb64597ebb9077abfe6e, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: e2f28d7d7478cb64597ebb9077abfe6e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: e2f28d7d7478cb64597ebb9077abfe6e, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2f28d7d7478cb64597ebb9077abfe6e, type: 3}
+--- !u!1 &2175218284856563040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: e2f28d7d7478cb64597ebb9077abfe6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2175218284856529856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2175218284856133952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: e2f28d7d7478cb64597ebb9077abfe6e,
