@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5661150049923469171}
   - component: {fileID: 3830638619813247949}
   - component: {fileID: 2367573418161052946}
+  - component: {fileID: 2664287482431917410}
   m_Layer: 9
   m_Name: Archery
   m_TagString: Structure
@@ -73,6 +74,7 @@ MonoBehaviour:
   _building: {fileID: -5002557242097696082}
   _sliderHealthBar: {fileID: 654329024}
   _imgHealthBarFill: {fileID: 802846243}
+  _lerpSpeed: 1
 --- !u!65 &3830638619813247949
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -102,6 +104,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!208 &2664287482431917410
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6295894650130244845}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.46626, y: 0.5, z: 3.432832}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1353206134294197283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -218,21 +236,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1353206135294303653, guid: fb8365f6ecd635042b6159cb422d42b8,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1353206133541978627, guid: fb8365f6ecd635042b6159cb422d42b8,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1353206133541978627, guid: fb8365f6ecd635042b6159cb422d42b8,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb8365f6ecd635042b6159cb422d42b8, type: 3}

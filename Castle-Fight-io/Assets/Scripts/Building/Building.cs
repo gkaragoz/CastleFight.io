@@ -236,31 +236,6 @@ public class Building : MonoBehaviour {
         StartCoroutine(IBuildingProcess());
     }
 
-    private void OnDrawGizmosSelected() {
-        Gizmos.color = Color.red;
-
-        Vector3 cornerUpperRight = new Vector3(  transform.position.x + (_boxCollider.size.x * 0.5f), 
-                                                 transform.position.y, 
-                                                 transform.position.z + (_boxCollider.size.z * 0.5f));
-        Ray rayUpperRight = new Ray(cornerUpperRight, Vector3.down);
-        RaycastHit hitUpperRightCorner;
-
-        if (Physics.Raycast(rayUpperRight, out hitUpperRightCorner, Mathf.Infinity)) {
-        }
-
-        Vector3 cornerLowerLeft = new Vector3(  transform.position.x - (_boxCollider.size.x * 0.5f), 
-                                                transform.position.y, 
-                                                transform.position.z - (_boxCollider.size.z * 0.5f));
-        Ray rayLowerLeft = new Ray(cornerUpperRight, Vector3.down);
-        RaycastHit hitLowerLeftCorner;
-
-        if (Physics.Raycast(rayUpperRight, out hitLowerLeftCorner, Mathf.Infinity)) {
-        }
-
-        Debug.DrawRay(cornerUpperRight, Vector3.down, Color.red, 3f);
-        Debug.DrawRay(cornerLowerLeft, Vector3.down, Color.red, 3f);
-    }
-
     #endregion
 
 }

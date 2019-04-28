@@ -5,7 +5,8 @@ Shader "PDT Shaders/TestGrid" {
 		_LineColor ("Line Color", Color) = (1,1,1,1)
 		_CellColor ("Cell Color", Color) = (0,0,0,0)
 		[PerRendererData] _MainTex ("Albedo (RGB)", 2D) = "white" {}
-		[IntRange] _GridSize("Grid Size", Range(1,100)) = 10
+		[IntRange] _GridSizeX("Grid Size X", Range(1,100)) = 10
+		[IntRange] _GridSizeY("Grid Size Y", Range(1,100)) = 10
 		_LineSize("Line Size", Range(0,1)) = 0.15
 	}
 	SubShader {
@@ -31,7 +32,8 @@ Shader "PDT Shaders/TestGrid" {
 		float4 _LineColor;
 		float4 _CellColor;
 
-		float _GridSize;
+		float _GridSizeX;
+		float _GridSizeY;
 		float _LineSize;
 
 		// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
@@ -50,19 +52,21 @@ Shader "PDT Shaders/TestGrid" {
 
 			float brightness = 1.;
 
-			float gsize = floor(_GridSize);
+			float gsizeX = floor(_GridSizeX);
+			float gsizeY = floor(_GridSizeY);
 
-			gsize += _LineSize;
+			gsizeX += _LineSize;
+			gsizeY += _LineSize;
 
 			float2 id;
 
-			id.x = floor(uv.x/(1.0/gsize));
-			id.y = floor(uv.y/(1.0/gsize));
+			id.x = floor(uv.x/(1.0/gsizeX));
+			id.y = floor(uv.y/(1.0/gsizeY));
 
 			float4 color = _CellColor;
 			brightness = _CellColor.w;
 
-			if (frac(uv.x*gsize) <= _LineSize || frac(uv.y*gsize) <= _LineSize)
+			if (frac(uv.x*gsizeX) <= _LineSize || frac(uv.y*gsizeY) <= _LineSize)
 			{
 				brightness = _LineColor.w;
 				color = _LineColor;
