@@ -24,6 +24,14 @@ public class CameraController : MonoBehaviour {
     [SerializeField]
     private float[] _boundsZ = new float[] { -18f, -4f };
 
+    [Header("Zooming")]
+    [SerializeField]
+    private float[] _zoomBounds = new float[] { 10f, 85f };
+    [SerializeField]
+    private float _zoomSpeedTouch = 0.1f;
+    private Vector2[] _lastZoomPositions; // Touch mode only
+    private bool _wasZoomingLastFrame; // Touch mode only
+
     [Header("Targeting")]
     [SerializeField]
     private Transform _targetFollow;
@@ -90,17 +98,43 @@ public class CameraController : MonoBehaviour {
     }
 
     private void TouchMovement() {
-        if (Input.touchCount == 1) {
-            // Panning
-            // If the touch began, capture its position and its finger ID.
-            // Otherwise, if the finger ID of the touch doesn't match, skip it.
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began) {
-                _lastPanPosition = touch.position;
-                _panFingerId = touch.fingerId;
-            } else if (touch.fingerId == _panFingerId && touch.phase == TouchPhase.Moved) {
-                PanCamera(touch.position);
-            }
+        switch (Input.touchCount) {
+
+            case 1: // Panning
+                _wasZoomingLastFrame = false;
+
+                // If the touch began, capture its position and its finger ID.
+                // Otherwise, if the finger ID of the touch doesn't match, skip it.
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began) {
+                    _lastPanPosition = touch.position;
+                    _panFingerId = touch.fingerId;
+                } else if (touch.fingerId == _panFingerId && touch.phase == TouchPhase.Moved) {
+                    PanCamera(touch.position);
+                }
+                break;
+
+            case 2: // Zooming
+                Vector2[] newPositions = new Vector2[] { Input.GetTouch(0).position, Input.GetTouch(1).position };
+                if (!_wasZoomingLastFrame) {
+                    _lastZoomPositions = newPositions;
+                    _wasZoomingLastFrame = true;
+                } else {
+                    // Zoom based on the distance between the new positions compared to the 
+                    // distance between the previous positions.
+                    float newDistance = Vector2.Distance(newPositions[0], newPositions[1]);
+                    float oldDistance = Vector2.Distance(_lastZoomPositions[0], _lastZoomPositions[1]);
+                    float offset = newDistance - oldDistance;
+
+                    ZoomCamera(offset, _zoomSpeedTouch);
+
+                    _lastZoomPositions = newPositions;
+                }
+                break;
+
+            default:
+                _wasZoomingLastFrame = false;
+                break;
         }
     }
 
@@ -127,6 +161,14 @@ public class CameraController : MonoBehaviour {
 
             transform.Translate(desiredMove, Space.Self);
         }
+    }
+
+    private void ZoomCamera(float offset, float speed) {
+        if (offset == 0) {
+            return;
+        }
+
+        Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView - (offset * speed), _zoomBounds[0], _zoomBounds[1]);
     }
 
     private void FollowTarget() {
