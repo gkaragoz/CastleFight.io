@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
-using RTS_Cam;
 
-[RequireComponent(typeof(RTS_Camera))]
+[RequireComponent(typeof(CameraController))]
 public class TargetSelector : MonoBehaviour {
 
-    private RTS_Camera cam;
+    private CameraController cam;
     private new Camera camera;
     public string targetsTag;
 
     private void Start() {
-        cam = gameObject.GetComponent<RTS_Camera>();
+        cam = gameObject.GetComponent<CameraController>();
         camera = gameObject.GetComponent<Camera>();
     }
 

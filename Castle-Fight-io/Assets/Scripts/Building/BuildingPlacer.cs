@@ -1,5 +1,4 @@
-﻿using RTS_Cam;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class BuildingPlacer : MonoBehaviour {
@@ -21,7 +20,7 @@ public class BuildingPlacer : MonoBehaviour {
     [SerializeField]
     private BuildingIndicator _buildingIndicator;
     [SerializeField]
-    private RTS_Camera RTS_Camera;
+    private CameraController RTS_Camera;
 
     public Building SelectedBuilding { get { return _selectedBuilding; } }
 

@@ -2482,41 +2482,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lastTab: 0
   movementSettingsFoldout: 1
-  zoomingSettingsFoldout: 0
-  heightSettingsFoldout: 1
   mapLimitSettingsFoldout: 1
   targetingSettingsFoldout: 1
-  inputSettingsFoldout: 1
   useFixedUpdate: 0
-  keyboardMovementSpeed: 5
-  screenEdgeMovementSpeed: 3
   followingSpeed: 150
   panningSpeed: 100
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 55
-  maxHeight: 30
-  minHeight: 10
-  heightDampening: 5
-  keyboardZoomingSensitivity: 2
-  scrollWheelZoomingSensitivity: 100
   limitMap: 1
   limitX: 65
   limitY: 65
   targetFollow: {fileID: 0}
   targetOffset: {x: 0, y: 0, z: -25}
-  useScreenEdgeInput: 1
-  screenEdgeBorder: 25
-  useKeyboardInput: 1
-  horizontalAxis: Horizontal
-  verticalAxis: Vertical
   usePanning: 1
   panningKey: 325
-  useKeyboardZooming: 1
-  zoomInKey: 101
-  zoomOutKey: 113
-  useScrollwheelZooming: 1
-  zoomingAxis: Mouse ScrollWheel
 --- !u!1 &1564906456
 GameObject:
   m_ObjectHideFlags: 0
