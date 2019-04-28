@@ -163,10 +163,16 @@ namespace RTS_Cam
         /// </summary>
         private void CameraUpdate()
         {
-            if (FollowingTarget)
+            // Quit from following target while panning.
+            if (usePanning && Input.GetKey(panningKey) && MouseAxis != Vector2.zero) {
+                ResetTarget();
+            }
+
+            if (FollowingTarget) {
                 FollowTarget();
-            else
+            } else {
                 Move();
+            }
 
             HeightCalculation();
             LimitPosition();

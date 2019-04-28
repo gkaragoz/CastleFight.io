@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RTS_Cam;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class BuildingPlacer : MonoBehaviour {
@@ -19,6 +20,8 @@ public class BuildingPlacer : MonoBehaviour {
     private Building _selectedBuilding;
     [SerializeField]
     private BuildingIndicator _buildingIndicator;
+    [SerializeField]
+    private RTS_Camera RTS_Camera;
 
     private void Awake() {
         _buildingIndicator.onBeginDrag = OnBeginDrag;
@@ -29,6 +32,8 @@ public class BuildingPlacer : MonoBehaviour {
     private void OnBeginDrag(PointerEventData data) {
         if (HasBuildingSelected()) {
             _isPlacing = true;
+
+            RTS_Camera.ResetTarget();
         }
     }
 
@@ -42,12 +47,16 @@ public class BuildingPlacer : MonoBehaviour {
 
             _meshParent.position = _truePosition;
             MoveHandlerUIPosition(_truePosition);
+
+            RTS_Camera.ResetTarget();
         }
     }
 
     private void OnEndDrag(PointerEventData data) {
         if (HasBuildingSelected()) {
             _isPlacing = false;
+
+            RTS_Camera.SetTarget(_selectedBuilding.transform);
         }
     }
 
@@ -73,6 +82,8 @@ public class BuildingPlacer : MonoBehaviour {
         _container.transform.position = Vector3.zero;
         _meshParent.transform.position = Vector3.zero;
         _buildingIndicator.Hide();
+
+        RTS_Camera.ResetTarget();
     }
 
     public bool CheckCollisions() {
@@ -98,6 +109,8 @@ public class BuildingPlacer : MonoBehaviour {
         _selectedBuilding.transform.SetParent(_meshParent);
         _selectedBuilding.transform.position = Vector3.zero;
         MoveHandlerUIPosition(_selectedBuilding.transform.position);
+
+        RTS_Camera.SetTarget(_selectedBuilding.transform);
     }
 
 }
