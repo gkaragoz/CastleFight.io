@@ -10,11 +10,16 @@ public class CameraControllerEditor : Editor {
     public override void OnInspectorGUI() {
         //base.OnInspectorGUI();
         Undo.RecordObject(cameraController, "RTS_CAmera");
-        MovementTab();
+        Draw();
         EditorUtility.SetDirty(cameraController);
     }
 
-    private void MovementTab() {
+    private void Draw() {
+        using (new HorizontalBlock()) {
+            GUILayout.Label("Use Fixed Update: ", EditorStyles.boldLabel, GUILayout.Width(170f));
+            cameraController.useFixedUpdate = EditorGUILayout.Toggle(cameraController.useFixedUpdate);
+        }
+
         using (new HorizontalBlock()) {
             GUILayout.Label("Panning with mouse: ", EditorStyles.boldLabel, GUILayout.Width(170f));
             cameraController.usePanning = EditorGUILayout.Toggle(cameraController.usePanning);

@@ -3,20 +3,6 @@
 [RequireComponent(typeof(Camera))]
 public class CameraController : MonoBehaviour {
 
-    #region Foldouts
-
-#if UNITY_EDITOR
-
-    public int lastTab = 0;
-
-    public bool movementSettingsFoldout;
-    public bool mapLimitSettingsFoldout;
-    public bool targetingSettingsFoldout;
-
-#endif
-
-    #endregion
-
     private Transform m_Transform; //camera tranform
     public bool useFixedUpdate = false; //use FixedUpdate() or Update()
 

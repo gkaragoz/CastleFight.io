@@ -2480,15 +2480,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ef8c68bade09b41aca258d42a632f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastTab: 0
-  movementSettingsFoldout: 1
-  mapLimitSettingsFoldout: 1
-  targetingSettingsFoldout: 1
   useFixedUpdate: 0
   followingSpeed: 150
   panningSpeed: 100
   limitMap: 1
-  limitX: 65
+  limitX: 40
   limitY: 65
   targetFollow: {fileID: 0}
   targetOffset: {x: 0, y: 0, z: -25}
